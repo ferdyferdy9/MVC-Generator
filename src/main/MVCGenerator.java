@@ -331,11 +331,13 @@ public final class MVCGenerator extends javax.swing.JFrame {
             }
             
             // Find primary key
-            int key;
-            for(key=desc.size()-1; key>=0; key--){
-                if(desc.get(key)[3] != null){
-                    if(desc.get(key)[3].equals("PRI")){
-                        break;
+            int key = -1;
+            if(keyMode != Mode.MANUAL){
+                for(key=desc.size()-1; key>=0; key--){
+                    if(desc.get(key)[3] != null){
+                        if(desc.get(key)[3].equals("PRI")){
+                            break;
+                        }
                     }
                 }
             }
@@ -346,14 +348,15 @@ public final class MVCGenerator extends javax.swing.JFrame {
                     key = 0;
                 } else {
                     tampil = "Table " + t + "\n";
-                    
+
                     int i=1;
                     for(String[] field : desc){
                         tampil += i + ". " + field[0] + "\n";
                         i++;
                     }
+                    tampil += "0. Skip" + "\n";
                     tampil += "Pilih Primary Key :";
-                    
+
                     int pilihan;
                     try{
                         String input = JOptionPane.showInputDialog(null, tampil);
@@ -361,11 +364,11 @@ public final class MVCGenerator extends javax.swing.JFrame {
                             throw(new NumberFormatException());
                         }
                         pilihan = Integer.parseInt(input);
-                    } catch(NumberFormatException e){
+                    } catch(NumberFormatException e) {
                         JOptionPane.showMessageDialog(null, "INPUT ERROR! SELECTING 1st choice as primary...");
                         pilihan = 1;
                     }
-                    
+
                     key = pilihan-1;
                 }
             }

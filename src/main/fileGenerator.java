@@ -26,6 +26,8 @@ public class fileGenerator {
             fw.close();
             
             for(int i=0;i<tableNames.size();i++){
+                if(models.get(i).key == -1)
+                    continue;
                 genInterface(models.get(i), dir);
                 genModel(models.get(i), dir);
                 genDAO(models.get(i), tableNames.get(i) , dir);
