@@ -33,6 +33,9 @@ public final class Model {
                 case "time":
                     baru = "Time";
                     break;
+		case "bigint":
+		    baru = "long";
+		    break;
             }
             
             types.set(i, baru);
