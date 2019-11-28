@@ -6,6 +6,8 @@ import java.util.Map;
 import javax.swing.JOptionPane;
 
 public final class MVCGenForm extends javax.swing.JFrame {
+    private ViewGenForm viewGenForm = new ViewGenForm();
+    
     private final Map rbName = new HashMap();
     private final Map rbAttribute = new HashMap();;
     private final Map rbConnector = new HashMap();;
@@ -64,10 +66,11 @@ public final class MVCGenForm extends javax.swing.JFrame {
         rb_PrimaryKeyHybrid = new javax.swing.JRadioButton();
         rb_PrimaryKeyManual = new javax.swing.JRadioButton();
         ta_notes = new javax.swing.JTextArea();
-        btn_generate = new javax.swing.JButton();
+        btn_EzGen = new javax.swing.JButton();
         label_outputDirectory = new javax.swing.JLabel();
         btn_chooseFiles = new javax.swing.JButton();
         tf_outputDirectory = new javax.swing.JTextField();
+        btn_generate = new javax.swing.JButton();
 
         myFileChooser.setCurrentDirectory(new java.io.File("C:\\"));
             myFileChooser.setFileSelectionMode(javax.swing.JFileChooser.DIRECTORIES_ONLY);
@@ -205,14 +208,16 @@ public final class MVCGenForm extends javax.swing.JFrame {
             getContentPane().add(myPanel);
             myPanel.setBounds(10, 70, 370, 280);
 
-            btn_generate.setText("Generate");
-            btn_generate.addActionListener(new java.awt.event.ActionListener() {
+            btn_EzGen.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
+            btn_EzGen.setText("Ez View Generator");
+            btn_EzGen.setToolTipText("");
+            btn_EzGen.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
-                    btn_generateActionPerformed(evt);
+                    btn_EzGenActionPerformed(evt);
                 }
             });
-            getContentPane().add(btn_generate);
-            btn_generate.setBounds(140, 400, 110, 30);
+            getContentPane().add(btn_EzGen);
+            btn_EzGen.setBounds(270, 400, 110, 30);
 
             label_outputDirectory.setText("Output Directory :");
             getContentPane().add(label_outputDirectory);
@@ -228,6 +233,15 @@ public final class MVCGenForm extends javax.swing.JFrame {
             btn_chooseFiles.setBounds(350, 360, 30, 30);
             getContentPane().add(tf_outputDirectory);
             tf_outputDirectory.setBounds(120, 360, 260, 30);
+
+            btn_generate.setText("Generate");
+            btn_generate.addActionListener(new java.awt.event.ActionListener() {
+                public void actionPerformed(java.awt.event.ActionEvent evt) {
+                    btn_generateActionPerformed(evt);
+                }
+            });
+            getContentPane().add(btn_generate);
+            btn_generate.setBounds(140, 400, 110, 30);
 
             pack();
             setLocationRelativeTo(null);
@@ -258,6 +272,10 @@ public final class MVCGenForm extends javax.swing.JFrame {
         
         Koneksi.closeConnection();
     }//GEN-LAST:event_btn_connectActionPerformed
+
+    private void tf_databaseNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_databaseNameActionPerformed
+        btn_connectActionPerformed(null);
+    }//GEN-LAST:event_tf_databaseNameActionPerformed
 
     private void btn_generateActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_generateActionPerformed
         if(!label_SQLConnected.isVisible()){
@@ -379,22 +397,14 @@ public final class MVCGenForm extends javax.swing.JFrame {
         MVCGenerator.create(models, tables, tf_outputDirectory.getText());
     }//GEN-LAST:event_btn_generateActionPerformed
 
-    private void tf_databaseNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_databaseNameActionPerformed
-        Koneksi.setNamaDB(tf_databaseName.getText());
-        
-        if(Koneksi.openConnection() != null){
-            JOptionPane.showMessageDialog(null, "Connection Success!\n");
-            label_SQLConnected.setVisible(true);
-            label_SQLNotConnected.setVisible(false);
-            myPanel.setVisible(true);
-        } else {
-            label_SQLConnected.setVisible(false);
-            label_SQLNotConnected.setVisible(true);
-            myPanel.setVisible(false);
+    private void btn_EzGenActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_EzGenActionPerformed
+        if(!label_SQLConnected.isVisible()){
+            JOptionPane.showMessageDialog(null, "Database not connected!");
+            return;
         }
         
-        Koneksi.closeConnection();
-    }//GEN-LAST:event_tf_databaseNameActionPerformed
+        viewGenForm.setVisible(true);
+    }//GEN-LAST:event_btn_EzGenActionPerformed
     
     public static void main(String args[]) {
         /* Set the Nimbus look and feel */
@@ -413,7 +423,6 @@ public final class MVCGenForm extends javax.swing.JFrame {
             java.util.logging.Logger.getLogger(MVCGenForm.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
-        //</editor-fold>
 
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(() -> {
@@ -426,6 +435,7 @@ public final class MVCGenForm extends javax.swing.JFrame {
     private javax.swing.ButtonGroup bg_keyDetectionMode;
     private javax.swing.ButtonGroup bg_modelAttributeMode;
     private javax.swing.ButtonGroup bg_modelNameMode;
+    private javax.swing.JButton btn_EzGen;
     private javax.swing.JButton btn_chooseFiles;
     private javax.swing.JButton btn_connect;
     private javax.swing.JButton btn_generate;
