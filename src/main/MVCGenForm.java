@@ -6,7 +6,7 @@ import java.util.Map;
 import javax.swing.JOptionPane;
 
 public final class MVCGenForm extends javax.swing.JFrame {
-    private ViewGenForm viewGenForm = new ViewGenForm();
+    private ViewGenForm viewGenForm;
     
     private final Map rbName = new HashMap();
     private final Map rbAttribute = new HashMap();;
@@ -259,6 +259,7 @@ public final class MVCGenForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_chooseFilesActionPerformed
 
     private void btn_connectActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_connectActionPerformed
+        String oldName = Koneksi.getNameDB();
         Koneksi.setNamaDB(tf_databaseName.getText());
         
         if(Koneksi.openConnection() != null){
@@ -273,6 +274,13 @@ public final class MVCGenForm extends javax.swing.JFrame {
         }
         
         Koneksi.closeConnection();
+        
+        if(!oldName.equals(tf_databaseName.getText())){
+            if(viewGenForm != null)
+                viewGenForm.dispose();
+            if(label_SQLConnected.isVisible())
+                viewGenForm = new ViewGenForm();
+        }
     }//GEN-LAST:event_btn_connectActionPerformed
 
     private void tf_databaseNameActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_tf_databaseNameActionPerformed
