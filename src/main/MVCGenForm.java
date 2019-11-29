@@ -77,7 +77,8 @@ public final class MVCGenForm extends javax.swing.JFrame {
 
             setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
             setTitle("MVC Generator - by Ferdy Nicolas");
-            setMinimumSize(new java.awt.Dimension(390, 470));
+            setMinimumSize(new java.awt.Dimension(404, 476));
+            setPreferredSize(new java.awt.Dimension(404, 476));
             setResizable(false);
             getContentPane().setLayout(null);
 
@@ -132,13 +133,13 @@ public final class MVCGenForm extends javax.swing.JFrame {
             bg_modelNameMode.add(rb_nameAuto);
             rb_nameAuto.setText("Automatic");
             myPanel.add(rb_nameAuto);
-            rb_nameAuto.setBounds(210, 30, 80, 23);
+            rb_nameAuto.setBounds(210, 30, 80, 21);
 
             bg_modelNameMode.add(rb_nameManual);
             rb_nameManual.setSelected(true);
             rb_nameManual.setText("Manual");
             myPanel.add(rb_nameManual);
-            rb_nameManual.setBounds(290, 30, 70, 23);
+            rb_nameManual.setBounds(290, 30, 70, 21);
 
             label_ModelAttribute.setText("Model Attribute Generation Mode :");
             myPanel.add(label_ModelAttribute);
@@ -148,12 +149,12 @@ public final class MVCGenForm extends javax.swing.JFrame {
             rb_attributeAuto.setSelected(true);
             rb_attributeAuto.setText("Automatic");
             myPanel.add(rb_attributeAuto);
-            rb_attributeAuto.setBounds(210, 50, 80, 23);
+            rb_attributeAuto.setBounds(210, 50, 80, 21);
 
             bg_modelAttributeMode.add(rb_attributeManual);
             rb_attributeManual.setText("Manual");
             myPanel.add(rb_attributeManual);
-            rb_attributeManual.setBounds(290, 50, 70, 23);
+            rb_attributeManual.setBounds(290, 50, 70, 21);
 
             label_tableDetTitle.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
             label_tableDetTitle.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -169,12 +170,12 @@ public final class MVCGenForm extends javax.swing.JFrame {
             rb_jconnectorNew.setSelected(true);
             rb_jconnectorNew.setText("New");
             myPanel.add(rb_jconnectorNew);
-            rb_jconnectorNew.setBounds(140, 100, 80, 23);
+            rb_jconnectorNew.setBounds(140, 100, 80, 21);
 
             bg_jconnectorMode.add(rb_jconnectorOld);
             rb_jconnectorOld.setText("Old");
             myPanel.add(rb_jconnectorOld);
-            rb_jconnectorOld.setBounds(220, 100, 70, 23);
+            rb_jconnectorOld.setBounds(220, 100, 70, 21);
 
             label_PrimaryKeyTitle.setText("Primary Key Detection :");
             myPanel.add(label_PrimaryKeyTitle);
@@ -183,18 +184,18 @@ public final class MVCGenForm extends javax.swing.JFrame {
             bg_keyDetectionMode.add(rb_PrimaryKeyAuto);
             rb_PrimaryKeyAuto.setText("Automatic");
             myPanel.add(rb_PrimaryKeyAuto);
-            rb_PrimaryKeyAuto.setBounds(140, 120, 80, 23);
+            rb_PrimaryKeyAuto.setBounds(140, 120, 80, 21);
 
             bg_keyDetectionMode.add(rb_PrimaryKeyHybrid);
             rb_PrimaryKeyHybrid.setSelected(true);
             rb_PrimaryKeyHybrid.setText("Hybrid");
             myPanel.add(rb_PrimaryKeyHybrid);
-            rb_PrimaryKeyHybrid.setBounds(220, 120, 70, 23);
+            rb_PrimaryKeyHybrid.setBounds(220, 120, 70, 21);
 
             bg_keyDetectionMode.add(rb_PrimaryKeyManual);
             rb_PrimaryKeyManual.setText("Manual");
             myPanel.add(rb_PrimaryKeyManual);
-            rb_PrimaryKeyManual.setBounds(290, 120, 70, 23);
+            rb_PrimaryKeyManual.setBounds(290, 120, 70, 21);
 
             ta_notes.setEditable(false);
             ta_notes.setBackground(new java.awt.Color(240, 240, 240));
@@ -211,13 +212,14 @@ public final class MVCGenForm extends javax.swing.JFrame {
             btn_EzGen.setFont(new java.awt.Font("Tahoma", 0, 9)); // NOI18N
             btn_EzGen.setText("Ez View Generator");
             btn_EzGen.setToolTipText("");
+            btn_EzGen.setMargin(new java.awt.Insets(2, 0, 2, 0));
             btn_EzGen.addActionListener(new java.awt.event.ActionListener() {
                 public void actionPerformed(java.awt.event.ActionEvent evt) {
                     btn_EzGenActionPerformed(evt);
                 }
             });
             getContentPane().add(btn_EzGen);
-            btn_EzGen.setBounds(270, 400, 110, 30);
+            btn_EzGen.setBounds(10, 400, 110, 30);
 
             label_outputDirectory.setText("Output Directory :");
             getContentPane().add(label_outputDirectory);
@@ -241,7 +243,7 @@ public final class MVCGenForm extends javax.swing.JFrame {
                 }
             });
             getContentPane().add(btn_generate);
-            btn_generate.setBounds(140, 400, 110, 30);
+            btn_generate.setBounds(270, 400, 110, 30);
 
             pack();
             setLocationRelativeTo(null);
@@ -407,14 +409,13 @@ public final class MVCGenForm extends javax.swing.JFrame {
     }//GEN-LAST:event_btn_EzGenActionPerformed
     
     public static void main(String args[]) {
-        /* Set the Nimbus look and feel */
         //<editor-fold defaultstate="collapsed" desc=" Look and feel setting code (optional) ">
         /* If Nimbus (introduced in Java SE 6) is not available, stay with the default look and feel.
          * For details see http://download.oracle.com/javase/tutorial/uiswing/lookandfeel/plaf.html 
          */
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                if ("Nimbus".equals(info.getName())) {
+                if ("Windows".equals(info.getName())) {
                     javax.swing.UIManager.setLookAndFeel(info.getClassName());
                     break;
                 }
